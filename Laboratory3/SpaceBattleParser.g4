@@ -15,6 +15,7 @@ command      : createObject
              | scoreCommand
              | logicalCommand
              | ifCommand
+             | commandBlock
              ;
 
 createObject : CREATE OBJECT ID SEMI ;
@@ -38,8 +39,7 @@ scoreCommand : SCORE (ID | INT) SEMI
 
 ifCommand : IF OPEN_PAR logicalExpression CLOSE_PAR command ;
 
-commandBlock : command
-             | OPEN_PAR commands CLOSE_PAR ;
+commandBlock : OPEN_CURLY commands CLOSE_CURLY ;
 
 expression      : logicalExpression ;
 
@@ -47,11 +47,10 @@ logicalExpression
     : relationalExpression ((AND | OR) relationalExpression)* ;
 
 relationalExpression
-                : arithmeticExpression ((LESS_THAN | GREATER_THAN | EQ | NOT_EQ) arithmeticExpression)?            
-                ;
+    : arithmeticExpression ((LESS_THAN | GREATER_THAN | EQ | NOT_EQ) arithmeticExpression)? ;
 
 arithmeticExpression
-                : term ((PLUS | MINUS) term)* ;
+    : term ((PLUS | MINUS) term)* ;
 
 term            : factor ((MUL | DIV) factor)* ;
 

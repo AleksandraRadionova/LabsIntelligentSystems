@@ -24,6 +24,9 @@ LESS_THAN    : '<';
 GREATER_THAN : '>';
 OPEN_PAR     : '(';
 CLOSE_PAR    : ')';
+OPEN_CURLY : '{' ;
+CLOSE_CURLY : '}' ;
+
 
 AND          : 'and';
 OR           : 'or';
