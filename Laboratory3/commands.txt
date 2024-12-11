@@ -1,0 +1,9 @@
+create object ship1;
+start;
+ship1 forward 10;
+if (fuel < 50) {
+    ship1 refuel;
+    ship1 forward 10;};
+ship1 fire target1;
+max_score 100;
+end;
